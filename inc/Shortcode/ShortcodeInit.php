@@ -1,7 +1,7 @@
 <?php
 namespace Awesome\Shortcode;
 
-use Awesome\Shortcode\ShortcodeMonopoly;
+use Awesome\Shortcode\ShortCodeBestDeals;
 
 /**
  * @author lookawesome team
@@ -17,7 +17,7 @@ class ShortcodeInit
 	}
 
 	public function includeTemplate() {
-		new ShortcodeMonopoly($this);
+		new ShortCodeBestDeals($this);
 	}
 
 	/**

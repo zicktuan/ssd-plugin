@@ -1,7 +1,7 @@
 <?php
 namespace Awesome\Shortcode;
 
-class ShortcodeAbout extends AbstractShortcode
+class ShortCodeBestDeals extends AbstractShortcode
 {
     public function __construct($self = null) {
         $this->parent = $self;
@@ -10,20 +10,20 @@ class ShortcodeAbout extends AbstractShortcode
     }
 
     /**
-     * Get shortcode name.
+     * Get shortCode name.
      *
      * @return string
      */
     public function get_name() {
-        return 'mayxaydung_about';
+        return 'awesome_best_deals';
     }
 
     /**
-     * Shortcode handler.
+     * ShortCode handler.
      *
-     * @param array $atts Shortcode attributes.
+     * @param array $atts ShortCode attributes.
      *
-     * @return string Shortcode output.
+     * @return string ShortCode output.
      */
     public function render($atts) {
         $atts = vc_map_get_attributes($this->get_name(), $atts);
@@ -32,12 +32,12 @@ class ShortcodeAbout extends AbstractShortcode
         $listItems = vc_param_group_parse_atts( $atts['items'] );
 
         ob_start();
-        include $this->parent->locateTemplate('shortcode-about.tpl.php');
+        include $this->parent->locateTemplate('shortcode-best-deals.tpl.php');
         return ob_get_clean();
     }
 
     /**
-     * Get shortcode settings.
+     * Get shortCode settings.
      *
      * @return array
      *
@@ -45,62 +45,46 @@ class ShortcodeAbout extends AbstractShortcode
      */
     public function map() {
         $params = array(
-        	array(
-                'type'       => 'attach_image',
-                'param_name' => 'bg_item',
-                'heading'    => esc_html__('Background', 'MXD')
-            ),
             array(
                 'type'       => 'textfield',
                 'param_name' => 'title_text',
-                'heading'    => esc_html__('Title', 'MXD')
+                'heading'    => esc_html__('Title', 'awesome')
             ),
             array(
-                'type'       => 'textarea',
+                'type'       => 'textfield',
                 'param_name' => 'item_des',
-                'heading'    => esc_html__('Description', 'MXD')
+                'heading'    => esc_html__('Description', 'awesome')
             ),
-            array(
-                'type'        => 'textfield',
-                'param_name'  => 'item_btn_detail',
-                'heading'     => esc_html__( 'Detail', 'hongdang' ),
-                'value'       => "Chi tiết"
-            ),
-            array(
-                'type'        => 'textfield',
-                'param_name'  => 'item_link_detail',
-                'heading'     => esc_html__( 'Link detail', 'hongdang' ),
-                'value'       => "#"
-            ),
+
             array(
                 'type'       => 'param_group',
                 'param_name' => 'items',
-                'heading'    => esc_html__( 'List', 'MXD' ),
+                'heading'    => esc_html__( 'List', 'awesome' ),
                 'params'     => array(
                     array(
                         'type'        => 'textfield',
                         'param_name'  => 'items_icon',
-                        'heading'     => esc_html__('Icon', 'MXD'),
-                        'description' => esc_html__('See list icon in -> http://astronautweb.co/snippet/font-awesome-icons-v4-2/', 'MXD')
+                        'heading'     => esc_html__('Icon', 'awesome'),
+                        'description' => esc_html__('See list icon in -> http://astronautweb.co/snippet/font-awesome-icons-v4-2/', 'awesome')
                     ),
                     array(
                         'type'       => 'textfield',
                         'param_name' => 'items_title',
-                        'heading'    => esc_html__('Title', 'MXD')
+                        'heading'    => esc_html__('Title', 'awesome')
                     ),
                     array(
                         'type'       => 'textfield',
                         'param_name' => 'items_excerpt',
-                        'heading'    => esc_html__('Excerpt', 'MXD')
+                        'heading'    => esc_html__('Excerpt', 'awesome')
                     )
                 )
             )
         );
 
         return array(
-            'name'        => esc_html__('About', 'MXD'),
-            'description' => esc_html__('About', 'MXD'),
-            'category'    => $this->get_category(),
+            'name'        => esc_html__('Best deals', 'awesome'),
+            'description' => esc_html__('Best deals Home', 'awesome'),
+            'category'    => 'Home',
             'icon'        => $this->get_icon(),
             'params'      => $params
         );
